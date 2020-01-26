@@ -20,13 +20,23 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        internal{
+        internal {
             initWith debug
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions 'price'
+    productFlavors {
+        free {
+
+        }
+        paid {
+
         }
     }
 }
