@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':library1', ':library2'
 rootProject.name='GradleTest'

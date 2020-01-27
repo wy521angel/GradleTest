@@ -30,13 +30,19 @@ android {
         }
     }
 
-    flavorDimensions 'price'
+    flavorDimensions 'price', 'nation'
     productFlavors {
         free {
-
+            dimension 'price'
         }
         paid {
-
+            dimension 'price'
+        }
+        china {
+            dimension 'nation'
+        }
+        global {
+            dimension 'nation'
         }
     }
 }
@@ -48,4 +54,17 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api project(':library1')
+}
+
+task bumpVersion(){
+    doLast{
+        def versionPropsFile = file('version.properties')
+        def versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def codeBumped = versionProps['VERSION_CODE'].toInteger() + 1
+        versionProps['VERSION_CODE'] = codeBumped.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
 }
