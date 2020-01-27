@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
-
+//Plugin 的最基本写法
+class PluginDemo implements Plugin<Project> {
+    @Override
+    void apply(Project target) {
+        println "Hello!"
+    }
+}
+apply plugin: PluginDemo
 android {
     signingConfigs {
         release {
@@ -58,9 +65,9 @@ dependencies {
     api project(':library1')
 }
 
-task bumpVersion(){
+task bumpVersion() {
     println "A"
-    doLast{
+    doLast {
         def versionPropsFile = file('version.properties')
         def versionProps = new Properties()
         versionProps.load(new FileInputStream(versionPropsFile))
