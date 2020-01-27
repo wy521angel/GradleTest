@@ -59,6 +59,7 @@ dependencies {
 }
 
 task bumpVersion(){
+    println "A"
     doLast{
         def versionPropsFile = file('version.properties')
         def versionProps = new Properties()
@@ -67,4 +68,5 @@ task bumpVersion(){
         versionProps['VERSION_CODE'] = codeBumped.toString()
         versionProps.store(versionPropsFile.newWriter(), null)
     }
+    println "B"
 }
