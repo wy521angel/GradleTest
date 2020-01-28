@@ -1,12 +1,39 @@
 apply plugin: 'com.android.application'
 //Plugin 的最基本写法
-class PluginDemo implements Plugin<Project> {
-    @Override
-    void apply(Project target) {
-        println "Hello!"
-    }
+//class PluginDemo implements Plugin<Project> {
+//    @Override
+//    void apply(Project target) {
+//        def author = 'wy521angel'
+//        println "Hello ${author}!"
+//    }
+//}
+
+//Plugin Extension
+//class PluginDemo implements Plugin<Project> {
+//    @Override
+//    void apply(Project target) {
+//        def extension = target.extensions.create('wy', ExtensionDemo)
+//        target.afterEvaluate {
+//            println "Hello ${extension.name}!"
+//        }
+//    }
+//}
+//
+//class ExtensionDemo {
+//    def name = 'Author'
+//}
+//
+//apply plugin: PluginDemo
+//
+//wy {
+//    name 'wy521angel'
+//}
+
+apply plugin: 'com.wy521angel.plugindemo'
+
+wy{
+    name 'GEM'
 }
-apply plugin: PluginDemo
 android {
     signingConfigs {
         release {
@@ -61,8 +88,6 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    api project(':library1')
 }
 
 task bumpVersion() {
