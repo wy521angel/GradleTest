@@ -8,7 +8,11 @@ import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
 
-public class TransFormDemo extends Transform {
+class TransFormDemo extends Transform {
+
+    // 构造方法
+    TransFormDemo() {
+    }
 
     // 对应的 task 名
     @Override
@@ -33,18 +37,21 @@ public class TransFormDemo extends Transform {
         return false
     }
 
+    // 具体的“转换”过程
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         def inputs = transformInvocation.inputs
         def outputProvider = transformInvocation.outputProvider
 
         inputs.each {
+            // jarInputs：各个依赖所编译成的 jar 文件
             it.jarInputs.each {
                 println "file:${it.file}"
                 File dest = outputProvider.getContentLocation(it.name, it.contentTypes, it.scopes, Format.JAR)
                 FileUtils.copyFile(it.file, dest)
             }
 
+            // derectoryInputs：本地 project 编译成的多个 class 文件存放的目录
             it.directoryInputs.each {
                 println "file:${it.file}"
                 File dest = outputProvider.getContentLocation(it.name, it.contentTypes, it.scopes, Format.DIRECTORY)
