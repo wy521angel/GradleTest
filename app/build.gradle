@@ -31,8 +31,16 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'com.wy521angel.plugindemo'
 
-wy{
+wy {
     name 'GEM'
+//    setName('GEM')
+//    name = 'GEM'
+}
+
+apply plugin: 'com.wy521angel.plugindemo2'
+
+wy2 {
+    name 'GEM2'
 }
 android {
     signingConfigs {
