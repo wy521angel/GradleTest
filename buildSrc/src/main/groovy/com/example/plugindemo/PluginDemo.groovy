@@ -7,6 +7,7 @@ class PluginDemo implements Plugin<Project> {
     @Override
     void apply(Project target) {
         def extension = target.extensions.create('wy', ExtensionDemo)
+//        def extension = target.extensions.create('wy', JavaExtensionDemo)
         target.afterEvaluate {
             println "Hello ${extension.name}!"
         }
