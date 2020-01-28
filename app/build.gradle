@@ -37,11 +37,6 @@ wy {
 //    name = 'GEM'
 }
 
-apply plugin: 'com.wy521angel.plugindemo2'
-
-wy2 {
-    name 'GEM2'
-}
 android {
     signingConfigs {
         release {
@@ -96,6 +91,12 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+// 下面的两句代码必须要移到 android 标签之后，因为 PluginDemo2 增加了获取 android 标签配置类的功能
+apply plugin: 'com.wy521angel.plugindemo2'
+wy2 {
+    name 'GEM2'
 }
 
 task bumpVersion() {

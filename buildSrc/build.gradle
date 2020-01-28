@@ -1,0 +1,10 @@
+//因为buildSrc最先运行，所以下面的仓库是需要增加的，即使 Project 的 build.gradle里的 allprojects 配置了
+repositories {
+    google()
+    jcenter()
+}
+dependencies {
+    implementation 'com.android.tools.build:gradle:3.5.3'
+}
+
+
